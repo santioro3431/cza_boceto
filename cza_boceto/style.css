@@ -1,0 +1,554 @@
+/* CSS Boceto / Wireframe con Colores Simples (sin efectos ni degradados) */
+
+/* Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Paleta de Colores Simples y Planos (Estilo Blueprint/Wireframe) */
+:root {
+  --bg-white: #ffffff;
+  --bg-light-gray: #f8fafc;
+  --bg-header: #f1f5f9;
+  --border-color: #cbd5e1;
+  
+  /* Colores planos e identificativos simples */
+  --primary-blue: #3b82f6;      /* Azul plano para elementos interactivos primarios */
+  --secondary-gray: #e2e8f0;    /* Gris plano para elementos secundarios */
+  
+  --text-dark: #334155;
+  --text-secondary: #64748b;
+  --text-white: #ffffff;
+  --placeholder-bg: #e2e8f0;
+}
+
+/* Tipografía "Natural" del texto (Inter) para toda la página */
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-dark);
+  background-color: var(--bg-white);
+  line-height: 1.5;
+  padding-top: 70px; /* Para compensar el header fijo */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif; /* Títulos con la fuente natural */
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-dark);
+}
+
+/* CLASE ESPECIAL: "Con esta fuente sería el texto" (Playfair Display) */
+.font-demo-label {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--text-dark);
+  border: 2px dashed var(--primary-blue); /* Resaltado con borde punteado azul */
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  margin: 0 auto 2.5rem auto;
+  background-color: var(--bg-white);
+  width: fit-content;
+}
+
+/* Layout Containers */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.section {
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--primary-blue); /* Etiqueta en color primario plano */
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.section-text {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.text-muted {
+  color: var(--text-secondary);
+}
+
+.bg-light {
+  background-color: var(--bg-light-gray);
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: var(--bg-header); /* Gris claro plano */
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-box {
+  width: 28px;
+  height: 28px;
+  background-color: var(--primary-blue); /* Azul simple plano */
+  border-radius: 4px;
+}
+
+.logo-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border-color);
+  font-size: 1.25rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  color: var(--text-dark);
+}
+
+@media (max-width: 767px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  .nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-header);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .nav.active {
+    display: flex;
+  }
+  
+  .nav-link, .btn-cta {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Buttons con colores simples planos */
+.btn-cta, .btn-primary, .btn-secondary, .btn-primary-form {
+  display: inline-block;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-cta {
+  background-color: var(--primary-blue);
+  color: var(--text-white);
+}
+
+.btn-primary {
+  background-color: var(--primary-blue);
+  color: var(--text-white);
+}
+
+.btn-primary-form {
+  background-color: var(--primary-blue);
+  color: var(--text-white);
+  width: 100%;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-gray);
+  color: var(--text-dark);
+}
+
+.btn-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary-blue);
+  text-decoration: underline;
+}
+
+.text-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary-blue);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Hero Section */
+.hero {
+  padding: 6rem 0;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+  background-color: var(--bg-light-gray);
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 3rem;
+  line-height: 1.15;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+/* Image Placeholders (Gris plano con indicador simple) */
+.image-wireframe {
+  border: 1px solid var(--border-color);
+  background-color: var(--placeholder-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 4px;
+}
+
+.wireframe-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background: var(--bg-white);
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.hero-image-placeholder {
+  width: 100%;
+  max-width: 850px;
+  height: 350px;
+}
+
+/* Stats Section */
+.stats {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-white);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-card {
+  text-align: center;
+}
+
+.stat-card .icon-placeholder {
+  width: 24px;
+  height: 24px;
+  background-color: var(--primary-blue);
+  opacity: 0.6;
+  border-radius: 4px;
+  margin: 0 auto 0.75rem auto;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.stat-label {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .col-2 {
+    grid-column: span 2;
+  }
+  .row-2 {
+    grid-row: span 2;
+  }
+}
+
+.bento-card {
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-white);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 4px;
+}
+
+.bento-card .icon-placeholder {
+  width: 36px;
+  height: 36px;
+  background-color: var(--secondary-gray);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Team Grid */
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.team-card {
+  text-align: left;
+}
+
+.team-image {
+  width: 100%;
+  height: 280px;
+  margin-bottom: 1rem;
+}
+
+.team-name {
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
+}
+
+.team-role {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Formulario con colores simples planos */
+.wireframe-form {
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  background-color: var(--bg-white);
+  border-radius: 4px;
+}
+
+.form-group-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .form-group-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-control {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.form-input {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  padding: 0.75rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  background-color: var(--bg-light-gray);
+  color: var(--text-dark);
+  border-radius: 4px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--bg-header); /* Gris de cabecera */
+  border-top: 1px solid var(--border-color);
+  padding: 4rem 0 2rem 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+.footer-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.footer-title {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+  color: var(--text-dark);
+}
+
+.footer-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  max-width: 320px;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
